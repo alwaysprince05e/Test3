@@ -1,17 +1,24 @@
 pipeline {
     agent any
-    tools {
-        maven 'maven'  // Use the exact name you set in Global Tool Configuration
-    }
     stages {
-        stage('Build') {
+        stage("git-Checkout") {
             steps {
-                sh 'mvn clean package'
+                echo "Performing Git Checkout"
             }
         }
-        stage('Test') {
+        stage("Build") {
             steps {
-                sh 'mvn test'
+                echo "Building"
+            }
+        }
+        stage("Test") {
+            steps {
+                echo "Testing"
+            }
+        }
+        stage("Deploy") {
+            steps {
+                echo "Deploying"
             }
         }
     }
